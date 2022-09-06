@@ -1,0 +1,116 @@
+
+<MenuScreen>:
+    
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        # padding: 1
+        # spacing: 1
+        # size_hint: 1, 0.1
+        MDTopAppBar:
+            elevation: 1
+            title: "MDTopAppBar"
+            left_action_items: [["menu", lambda x: root.callback()]]
+            
+            
+            right_action_items: [["dots-vertical", lambda x: x], ["clock", lambda x: x]]
+            mode: "free-end"
+        
+       
+        Image:
+            id: camera
+            
+        Button:
+            text:'Capture'
+            size_hint_y: None
+            height: '48dp'
+            on_press:root.capture()
+            
+        Button:
+            text: 'Start/Stop'
+            size_hint_y: None
+            height: '48dp'
+            on_press: root.video()    
+        Button:
+            text: 'See the emotion plot'
+            size_hint_y: None
+            height: '48dp'
+            on_press: root.manager.current = 'settings'              
+    
+    
+    
+    
+<Plotting>:
+    MDBoxLayout:
+        orientation:"vertical"
+        # padding: 1
+        # spacing: 1
+        # size_hint: 1, 0.1
+        MDTopAppBar:
+            elevation: 1
+            title: "MDTopAppBar"
+            left_action_items: [["menu", lambda x:  root.callback()]]
+            
+            
+            right_action_items: [["dots-vertical", lambda x: x], ["clock", lambda x: x]]
+            valign: 'top'
+    
+       
+        BoxLayout:
+            id: box
+            size_hint_y: .8
+            pos_hint: {"top":1}
+       
+        # MDLabel:
+        #     id:test
+        #     text: "text"
+        #     halign: 'center'
+
+    BoxLayout:
+        orientation:"horizontal"
+        Button:
+            text:'Show'
+            size_hint_y: None
+            height: '48dp'
+            on_press: root.show()
+
+        
+        Button:
+            text: 'Back to menu'
+            on_press: 
+                root.manager.current = 'menu'
+                root.reset_list()
+
+            size_hint_y: None
+            height: '48dp'
+
+
+
+<LoadDialog>:
+    BoxLayout:
+        orientation: "vertical"
+        size: root.size
+        pos: root.pos
+        FileChooserListView:
+            id: filechooser
+            path: r'C:\Users\DLPC\Desktop\kivy\application\images'
+            # on_selection: video.source = filechooser.selection[0].encode('utf-8')
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Load"
+                on_release: root.load(filechooser.selection)
+                
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+
+        # VideoPlayer:
+        #         id: video
+        #         source: root.fn_video
+        
+
+
+
+
