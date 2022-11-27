@@ -3,7 +3,9 @@
 
 pythonの仮想環境を作って、そこにこのリポジトリをcloneしてください。
 
-#Requirement
+
+# requirement
+
 absl-py==1.2.0
 altgraph==0.17.2
 astunparse==1.6.3
