@@ -38,7 +38,7 @@ kivy-deps.gstreamer==0.3.3
 kivy-deps.sdl2==0.4.5
 Kivy-examples==2.1.0
 Kivy-Garden==0.1.5
-kivymd @ file:///C:/Users/DLPC/Desktop/kivy/KivyMD
+# kivymd @ file:///C:/Users/DLPC/Desktop/kivy/KivyMD
 kiwisolver==1.4.4
 layers==0.1.5
 libclang==14.0.6
@@ -79,18 +79,18 @@ rsa==4.9
 scikit-learn==1.0.2
 scipy==1.7.3
 six==1.16.0
-tensorboard==2.9.1
-tensorboard-data-server==0.6.1
-tensorboard-plugin-wit==1.8.1
-tensorflow==2.9.1
-tensorflow-estimator==2.9.0
-tensorflow-io-gcs-filesystem==0.26.0
+# tensorboard==2.9.1
+# tensorboard-data-server==0.6.1
+# tensorboard-plugin-wit==1.8.1
+# tensorflow==2.9.1
+# tensorflow-estimator==2.9.0
+# tensorflow-io-gcs-filesystem==0.26.0
 termcolor==1.1.0
 threadpoolctl==3.1.0
 timm==0.6.7
-torch==1.10.2+cu113
-torchaudio==0.10.2+cu113
-torchvision==0.11.3+cu113
+torch
+torchaudio
+torchvision
 tornado==6.2
 tqdm==4.19.9
 traitlets==5.3.0
