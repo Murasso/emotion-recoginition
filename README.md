@@ -3,7 +3,9 @@
 
 pythonの仮想環境を作って、そこにこのリポジトリをcloneしてください。
 
-python kivyapp_ver2.pyで動かせます。
+ターミナルで
+python kivyapp_ver2.py
+で動かせます。
 # requirement
 
 absl-py==1.2.0
