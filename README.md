@@ -41,5 +41,5 @@ This tool facilitates facial expression analysis using Python 3.8 or 3.9.
 - Various machine learning-related libraries are listed, including TensorFlow, scikit-learn, PyTorch, etc.
 - Be cautious with `git clone` using SSH, as it requires SSH keys.
 - Make sure the specified library versions are compatible.
-
+- if you press capture on the app, the image taken from your webcam gets stored in application/image folder. Make sure you have image folder in application directory.
 Feel free to reach out if you have any questions!
