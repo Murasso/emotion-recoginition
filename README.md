@@ -22,7 +22,7 @@ This tool facilitates facial expression analysis using Python 3.8 or 3.9.
     pip install -r requirements.txt
     ```
 
-4. Run the tool:
+4. In the application directory, run the tool:
     ```terminal
     python kivyapp_ver2.py
     ```
