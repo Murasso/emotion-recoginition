@@ -1,4 +1,4 @@
-from scipy.special import softmax 
+from scipy.special import softmax
 import matplotlib.pyplot as plt
 
 
@@ -7,7 +7,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
- 
+
 
 
 from torchvision import datasets, transforms
@@ -17,13 +17,13 @@ import timm    #←これを追加
 import cv2
 import numpy as np
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-face_detection_model = cv2.dnn.readNetFromCaffe(r'C:\Users\DLPC\Desktop\kivy\application\models\deploy.prototxt.txt',r'C:\Users\DLPC\Desktop\kivy\application\models\res10_300x300_ssd_iter_140000_fp16.caffemodel')
+face_detection_model = cv2.dnn.readNetFromCaffe('.\\models\\deploy.prototxt.txt', '.\\models\\res10_300x300_ssd_iter_140000_fp16.caffemodel')
 model_names = timm.list_models(pretrained=True)
 model = timm.create_model('vit_small_patch16_224', pretrained=True, num_classes=7)
 model.to(device)
 labels =['angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']
 
-model.load_state_dict(torch.load(r'C:\Users\DLPC\Desktop\kivy\application\model\model_5e_4.pth'))
+model.load_state_dict(torch.load('.\\model\\model_5e_4.pth', map_location=torch.device(device)))
 model.to('cpu')
 def getColor(label):
     if label == "angry":
@@ -46,7 +46,9 @@ def getColor(label):
 
 def face_mask_prediction(img):
     # step 1: face detection
-    # img = cv2.imread(r'C:\Users\DLPC\Desktop\Demo_App\App\pictures\_20220715_081524.jpg')
+    # img = cv2.imread('./images/IMG_20240131_172337.png')
+    # img= cv2.resize(img,(480,640))
+    # print(img.shape)
     image = img.copy()
     h, w = image.shape[:2]
     blob = cv2.dnn.blobFromImage(image,1,(300,300),swapRB=True)
@@ -68,7 +70,7 @@ def face_mask_prediction(img):
             face = image[box[1]:box[3],box[0]:box[2]]
             face_blob = cv2.dnn.blobFromImage(face,1,(224,224),swapRB=True)
             face_blob_squeeze = np.squeeze(face_blob).T #for correct rotation .T
-            face_blob_rotate = cv2.rotate(face_blob_squeeze,cv2.ROTATE_90_CLOCKWISE) #for correct structure 
+            face_blob_rotate = cv2.rotate(face_blob_squeeze,cv2.ROTATE_90_CLOCKWISE) #for correct structure
             face_blob_flip = cv2.flip(face_blob_rotate,1) #for flip the image
 
             # normalization
@@ -79,7 +81,6 @@ def face_mask_prediction(img):
             transforms.Resize((224,224)),
             transforms.ToTensor(),
             # transforms.Normalize(mean,std)
-
             ])
 
             # plt.imshow(img_norm)
@@ -87,17 +88,15 @@ def face_mask_prediction(img):
             img_input=img_input.view(1,3,224,224)
             # print(img_input.shape)
             # img_input=transforms.ToTensor()(img_input)
-            
-            
             result = model(img_input)
-            
+
             #print(result) #the probabilities of the labels
-            
+
             with torch.no_grad():
                 result = softmax(result.to('cpu'))[0]
             # print(result)
             confidence_index = result.argmax() #take out the labels out of this and exctract only where we have the highest value and that means that it wears a mask
-            
+
             confidence_score = result[confidence_index]
             # print('The confidence score is =',confidence_score)
             label = labels[confidence_index] #label out
@@ -108,13 +107,17 @@ def face_mask_prediction(img):
 
             # put the ractangular box and whow the label on top of the face
 
-            color =(0,255,0)     #getColor(label)
+            color = getColor(label)
             cv2.rectangle(image,pt1,pt2,color,1)
             cv2.putText(image,label_text,pt1,cv2.FONT_HERSHEY_PLAIN,2,color,2) #thickness is 2 to be more clear the text on top of the face
             # plt.imshow(image)
             for i in range(7):
                 cv2.rectangle(image, (80, 300+10*i), (80+int(res_values[i]), 310+10*i), getColor(labels[i]), thickness=-1)
                 cv2.putText(image,labels[i],(10, 307+10*i), cv2.FONT_HERSHEY_PLAIN,0.9, getColor(labels[i]),1)
+            # interval=13
+            # for i in range(7):
+            #     cv2.rectangle(image, (120, 300+interval*i), (100+int(res_values[i]), 310+interval*i), getColor(labels[i]), thickness=-1)
+            #     cv2.putText(image,labels[i],(10, 310+interval*i), cv2.FONT_HERSHEY_PLAIN,1.5, getColor(labels[i]),2)
             return image,result.to('cpu').detach().numpy().copy()
 
 
