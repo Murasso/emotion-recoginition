@@ -46,8 +46,8 @@ def getColor(label):
 
 def face_mask_prediction(img):
     # step 1: face detection
-    # img = cv2.imread('./images/IMG_20240131_172337.png')
-    # img= cv2.resize(img,(480,640))
+    # img = cv2.imread('./images/IMG_20240131_172337.png') #To analyze an image, make a /image folder under application directory and store the png image
+    # img= cv2.resize(img,(480,640))    # and uncomment line 49, 50, 117 ~ 120. Comment out line 114~116
     # print(img.shape)
     image = img.copy()
     h, w = image.shape[:2]
@@ -114,7 +114,7 @@ def face_mask_prediction(img):
             for i in range(7):
                 cv2.rectangle(image, (80, 300+10*i), (80+int(res_values[i]), 310+10*i), getColor(labels[i]), thickness=-1)
                 cv2.putText(image,labels[i],(10, 307+10*i), cv2.FONT_HERSHEY_PLAIN,0.9, getColor(labels[i]),1)
-            # interval=13
+            # interval=13   #uncommen these lines to use image in the application/image folder
             # for i in range(7):
             #     cv2.rectangle(image, (120, 300+interval*i), (100+int(res_values[i]), 310+interval*i), getColor(labels[i]), thickness=-1)
             #     cv2.putText(image,labels[i],(10, 310+interval*i), cv2.FONT_HERSHEY_PLAIN,1.5, getColor(labels[i]),2)
