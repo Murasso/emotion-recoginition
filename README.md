@@ -1,106 +1,45 @@
 # emotion-recoginition
 顔の表情分析ツールです。
+This tool facilitates facial expression analysis using Python 3.8 or 3.9.
 
-pythonの仮想環境を作って、そこにこのリポジトリをcloneしてください。
+**Note**: Make sure you have Python 3.8 or 3.9 installed.
 
-ターミナルで
-python kivyapp_ver2.py
-で動かせます。
-# requirement
+1. Create a virtual environment:
+    ```terminal
+    python -m venv EmotionRecoginition
+    cd EmotionRecoginiton
+    ./Script/activate
+    ```
 
-absl-py==1.2.0
-altgraph==0.17.2
-astunparse==1.6.3
-backcall==0.2.0
-Bashutils==0.0.4
-cachetools==5.2.0
-certifi==2022.6.15
-charset-normalizer==2.1.1
-colorama==0.4.5
-cycler==0.11.0
-debugpy==1.6.3
-decorator==5.1.1
-docutils==0.19
-entrypoints==0.4
-flatbuffers==1.12
-fonttools==4.37.1
-future==0.18.2
-gast==0.4.0
-google-auth==2.11.0
-google-auth-oauthlib==0.4.6
-google-pasta==0.2.0
-grpcio==1.47.0
-h5py==3.7.0
-idna==3.3
-importlib-metadata==4.12.0
-ipykernel==6.15.2
-ipython==7.34.0
-jedi==0.18.1
-joblib==1.1.0
-jupyter-core==4.11.1
-jupyter_client==7.3.5
-keras==2.9.0
-Keras-Preprocessing==1.1.2
-Kivy==2.1.0
-kivy-deps.angle==0.3.2
-kivy-deps.glew==0.3.1
-kivy-deps.gstreamer==0.3.3
-kivy-deps.sdl2==0.4.5
-Kivy-examples==2.1.0
-Kivy-Garden==0.1.5
-kivymd @ file:///C:/Users/%E6%9D%91%E4%B8%8A%E3%80%80%E5%A5%8F/Documents/Facial_recoginition/KivyMD
-kiwisolver==1.4.4
-layers==0.1.5
-libclang==14.0.6
-Markdown==3.4.1
-MarkupSafe==2.1.1
-matplotlib==3.5.3
-matplotlib-inline==0.1.6
-nest-asyncio==1.5.5
-numpy==1.23.3
-oauthlib==3.2.0
-opencv-python==4.6.0.66
-opt-einsum==3.3.0
-packaging==21.3
-pandas==1.3.5
-parso==0.8.3
-pefile==2022.5.30
-pickleshare==0.7.5
-Pillow==9.2.0
-prompt-toolkit==3.0.30
-protobuf==3.19.4
-psutil==5.9.1
-pyasn1==0.4.8
-pyasn1-modules==0.2.8
-Pygments==2.13.0
-pyinstaller==5.3
-pyinstaller-hooks-contrib==2022.10
-pyparsing==3.0.9
-pypiwin32==223
-python-dateutil==2.8.2
-pytz==2022.2.1
-pywin32==304
-pywin32-ctypes==0.2.0
-PyYAML==6.0
-pyzmq==23.2.1
-requests==2.28.1
-requests-oauthlib==1.3.1
-rsa==4.9
-scikit-learn==1.0.2
-scipy==1.7.3
-six==1.16.0
-termcolor==1.1.0
-threadpoolctl==3.1.0
-timm==0.6.7
-torch==1.11.0+cpu
-torchaudio==0.11.0+cpu
-torchvision==0.12.0+cpu
-tornado==6.2
-tqdm==4.19.9
-traitlets==5.3.0
-typing_extensions==4.3.0
-urllib3==1.26.12
-wcwidth==0.2.5
-Werkzeug==2.2.2
-wrapt==1.14.1
-zipp==3.8.1
+2. Clone the repository:
+    ```termanal
+    git clone git@github.com:Murasso/emotion-recoginition.git
+    ```
+
+3. Install required libraries:
+    ```termanal
+    cd emotion-recoginition/application
+    pip install -r requirements.txt
+    ```
+
+4. Run the tool:
+    ```terminal
+    python kivyapp_ver2.py
+    ```
+
+## Required Libraries:
+- absl-py==1.2.0
+- altgraph==0.17.2
+- astunparse==1.6.3
+- backcall==0.2.0
+- Bashutils==0.0.4
+- ... (and many more, as listed in your provided requirements.txt)
+
+**Notes**:
+- Ensure you have the correct Python version for the virtual environment.
+- The tool uses Kivy for the graphical user interface and OpenCV for facial recognition.
+- Various machine learning-related libraries are listed, including TensorFlow, scikit-learn, PyTorch, etc.
+- Be cautious with `git clone` using SSH, as it requires SSH keys.
+- Make sure the specified library versions are compatible.
+
+Feel free to reach out if you have any questions!
